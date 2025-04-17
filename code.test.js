@@ -2,7 +2,7 @@ const fs = require('fs');
 const jsc = require('jsverify');
 eval(fs.readFileSync('code.js') + '');
 
-// Hardcoded graph test 1
+// Test 1: Hardcoded graph
 const testExpected1 =
     jsc.forall(jsc.constant(true), function () {
         const graph = {
@@ -30,7 +30,7 @@ const testExpected1 =
         return true;
     });
 
-// Hardcoded graph test 2
+// Test 2: Hardcoded graph test 2
 const testExpected2 =
     jsc.forall(jsc.constant(true), function () {
         const graph = {
@@ -58,8 +58,37 @@ const testExpected2 =
         return true;
     });
 
+// Test 3: Hardcoded test with unreachable nodes
+const testExpectedUnreachable =
+    jsc.forall(jsc.constant(true), function () {
+        const graph = {
+            A: { B: 1 },
+            B: { A: 1 },
+            C: { D: 2 },
+            D: { C: 2 }
+        };
+
+        const expected = {
+            A: 0,
+            B: 1,
+            C: Infinity,
+            D: Infinity
+        };
+
+        const result = dijkstra(graph, 'A');
+
+        for (let node in expected) {
+            if (result[node] != expected[node]) {
+                return false;
+            }
+        }
+
+        return true;
+    });
 
 jsc.assert(testExpected1);
 console.log("testExpected1 passed.")
 jsc.assert(testExpected2);
 console.log("testExpected2 passed.")
+jsc.assert(testExpectedUnreachable);
+console.log("testExpectedUnreachable passed.");

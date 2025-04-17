@@ -31,32 +31,36 @@ First For Loop: `for (let node in graph) {`
 This loop initializes the distance for each vertex to infinity, and adds all verticies to the
 unvisited nodes list
 
-$O(n)$
+$O(V)$
 
 While Loop: `while (unvisited_nodes.length > 0)`
 
 This while loop runs until all verticies have been visited. In the worst case every vertex will be
 visited once:
 
-$O(n)$
+$O(V)$
 
 First Inner For Loop: `for (let node of unvisited_nodes) {`
 
 Within the while conditional we search through all unvisited nodes to find the node with the smallest distance so far. This is also a linear search.
 
-$O(n)$
+$O(V)$
 
 Second Inner For Loop: `for (let neighbor in graph[currentNode]) {`
 
-Within the while conditioanl we iterate through all of the adjacent nodes now (neighbors) of the current node. Every edge is examined once, so therefore this loop runs for $O(E)$.
+Within the while conditional we iterate through all of the adjacent nodes now (neighbors) of the current node. In other words we go through all nodes directly connected to it by an edge. Each edge is examined once from each of its connecting nodes over the entire algorithm run.
 
-$O(n)$ where $n = E$
+$O(E)$
 
 General:
 
-The while loop, with the nested for loops create the dominating term of:
+The while loop, with the nested for loops create the following:
 
-$O(n) * O(n)$ = $\Theta(n^2)$ where $n = V$ (nodes are equal to verticies).
+$O(V) * (O(V) + O(E))= \Theta(V^2 + E)$
+
+The dominate term remains, and therefore we are left with:
+
+$\Theta(V^2)$
 
 My implementation algorithm performs V iterations of searching through V unvisited nodes in other words- making this quadratic runtime.
 
