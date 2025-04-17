@@ -87,8 +87,8 @@ const testExpectedUnreachable =
     });
 
 jsc.assert(testExpected1);
-console.log("testExpected1 passed.")
+console.log("testExpected1 passed.");
 jsc.assert(testExpected2);
-console.log("testExpected2 passed.")
+console.log("testExpected2 passed.");
 jsc.assert(testExpectedUnreachable);
 console.log("testExpectedUnreachable passed.");
