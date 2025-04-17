@@ -59,3 +59,9 @@ The while loop, with the nested for loops create the dominating term of:
 $O(n) * O(n)$ = $\Theta(n^2)$ where $n = V$ (nodes are equal to verticies).
 
 My implementation algorithm performs V iterations of searching through V unvisited nodes in other words- making this quadratic runtime.
+
+- Referenced https://www.geeksforgeeks.org/introduction-to-dijkstras-shortest-path-algorithm/ for dijkstra's algorithm reference and code. All code was written by me, just used this resource for references.
+
+- Used Testing Suite code from previous repositories to figure out how to write tests and get them on the github autorunner
+
+"I certify that I have listed all sources used to complete this exercise, including the use of any Large Language Models. All of the work is my own, except where stated otherwise. I am aware that plagiarism carries severe penalties and that if plagiarism is suspected, charges may be filed against me without prior notice."
